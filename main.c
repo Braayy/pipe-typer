@@ -2,6 +2,7 @@
 #include <X11/Xlib.h>
 #include <X11/keysym.h>
 #include <X11/extensions/XTest.h>
+#include <unistd.h>
 
 #define u32 unsigned int
 
@@ -18,6 +19,8 @@ int main() {
 
   u32 bar = XKeysymToKeycode(display, XK_bar);
   u32 shiftL = XKeysymToKeycode(display, XK_Shift_L);
+
+  usleep(100 * 1000);
 
   XTestFakeKeyEvent(display, shiftL, True, 0);
   XTestFakeKeyEvent(display, bar, True, 0);
